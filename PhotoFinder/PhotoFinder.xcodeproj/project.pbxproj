@@ -13,6 +13,9 @@
 		C942DBDC1FCD7599000D48C6 /* PhotoFinder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C942DBDA1FCD7599000D48C6 /* PhotoFinder.xcdatamodeld */; };
 		C942DBDE1FCD7599000D48C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C942DBDD1FCD7599000D48C6 /* Assets.xcassets */; };
 		C942DBE11FCD7599000D48C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C942DBDF1FCD7599000D48C6 /* LaunchScreen.storyboard */; };
+		C942DBEB1FCD7706000D48C6 /* PhotosListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C942DBEA1FCD7706000D48C6 /* PhotosListViewController.swift */; };
+		C942DBF11FCD7849000D48C6 /* PhotosListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C942DBF01FCD7849000D48C6 /* PhotosListController.swift */; };
+		C942DBF31FCDA4CE000D48C6 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C942DBF21FCDA4CE000D48C6 /* ImageCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		C942DBDD1FCD7599000D48C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C942DBE01FCD7599000D48C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C942DBE21FCD7599000D48C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C942DBEA1FCD7706000D48C6 /* PhotosListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosListViewController.swift; sourceTree = "<group>"; };
+		C942DBF01FCD7849000D48C6 /* PhotosListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosListController.swift; sourceTree = "<group>"; };
+		C942DBF21FCDA4CE000D48C6 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +62,7 @@
 		C942DBD21FCD7599000D48C6 /* PhotoFinder */ = {
 			isa = PBXGroup;
 			children = (
+				C942DBEF1FCD77DE000D48C6 /* Modules */,
 				C942DBD31FCD7599000D48C6 /* AppDelegate.swift */,
 				C942DBD51FCD7599000D48C6 /* ViewController.swift */,
 				C942DBD71FCD7599000D48C6 /* Main.storyboard */,
@@ -65,6 +72,56 @@
 				C942DBDA1FCD7599000D48C6 /* PhotoFinder.xcdatamodeld */,
 			);
 			path = PhotoFinder;
+			sourceTree = "<group>";
+		};
+		C942DBE81FCD76C0000D48C6 /* PhotosList */ = {
+			isa = PBXGroup;
+			children = (
+				C942DBEE1FCD77C3000D48C6 /* Controller */,
+				C942DBED1FCD77BE000D48C6 /* View */,
+				C942DBEC1FCD77B4000D48C6 /* Model */,
+			);
+			path = PhotosList;
+			sourceTree = "<group>";
+		};
+		C942DBE91FCD76D2000D48C6 /* PhotoDetail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PhotoDetail;
+			sourceTree = "<group>";
+		};
+		C942DBEC1FCD77B4000D48C6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C942DBED1FCD77BE000D48C6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C942DBEA1FCD7706000D48C6 /* PhotosListViewController.swift */,
+				C942DBF21FCDA4CE000D48C6 /* ImageCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C942DBEE1FCD77C3000D48C6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C942DBF01FCD7849000D48C6 /* PhotosListController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C942DBEF1FCD77DE000D48C6 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				C942DBE91FCD76D2000D48C6 /* PhotoDetail */,
+				C942DBE81FCD76C0000D48C6 /* PhotosList */,
+			);
+			path = Modules;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,7 +196,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C942DBF31FCDA4CE000D48C6 /* ImageCollectionViewCell.swift in Sources */,
 				C942DBD61FCD7599000D48C6 /* ViewController.swift in Sources */,
+				C942DBF11FCD7849000D48C6 /* PhotosListController.swift in Sources */,
+				C942DBEB1FCD7706000D48C6 /* PhotosListViewController.swift in Sources */,
 				C942DBDC1FCD7599000D48C6 /* PhotoFinder.xcdatamodeld in Sources */,
 				C942DBD41FCD7599000D48C6 /* AppDelegate.swift in Sources */,
 			);
