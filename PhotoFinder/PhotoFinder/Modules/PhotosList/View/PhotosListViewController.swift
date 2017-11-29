@@ -74,10 +74,10 @@ class PhotosListViewController: UIViewController {
 
 extension PhotosListViewController: PhotosListView {
     
-    func displayImages(imageUrls: [String]) {
+    func displayViewModel(_ viewModel: PhotosContainerViewModel) {
         
     }
-    
+
 }
 
 extension PhotosListViewController: UICollectionViewDelegateFlowLayout {

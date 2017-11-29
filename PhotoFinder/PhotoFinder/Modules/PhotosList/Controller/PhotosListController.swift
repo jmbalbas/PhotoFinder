@@ -14,21 +14,44 @@ protocol PhotosListPresenter: class {
 }
 
 protocol PhotosListView: class {
-    func displayImages(imageUrls: [String])
+    func displayViewModel(_ viewModel: PhotosContainerViewModel)
 }
 
 class PhotosListController {
     
     weak var view: PhotosListViewController?
     
+    private var photosContainerViewModel: PhotosContainerViewModel? {
+        didSet {
+            if let photosContainer = photosContainerViewModel {
+                view?.displayViewModel(photosContainer)
+            }
+        }
+    }
+    
+    private func getViewModel() {
+        let repository = RepositoryFactory.getRepository()
+        
+        repository.getPhotosByKeyword("puppy") { [weak self] (response, error) in
+            guard let weakSelf = self else { return }
+            
+            DispatchQueue.main.async {
+                if let response = response {
+                    weakSelf.photosContainerViewModel = PhotosContainerMapper.map(response)
+                } else if let error = error {
+                    print(error.localizedDescription)
+                }
+            }
+        }
+    }
+    
+    
 }
 
 extension PhotosListController: PhotosListPresenter {
     
     func viewIsReady() {
-        // TODO
-        // Get viewModel from API
-        // Pass viewModel to the view
+        getViewModel()
     }
     
     func cellSelected() {

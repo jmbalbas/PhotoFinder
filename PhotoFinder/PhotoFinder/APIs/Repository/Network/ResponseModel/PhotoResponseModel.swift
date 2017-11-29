@@ -9,8 +9,8 @@
 import Foundation
 
 struct PhotoResponseModel {
-    var photoId: String?
-    var photoUrl: [PhotoUrlResponseModel]?
+    var photoId: Int?
+    var photoUrl: [String]?
     var title: String?
     var description: String?
     var author: UserResponseModel?
@@ -33,8 +33,8 @@ extension PhotoResponseModel: Decodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: Keys.self)
         
-        let photoId = try? container.decode(String.self, forKey: Keys.photoId)
-        let photoUrl = try? container.decode([PhotoUrlResponseModel].self, forKey: Keys.photoUrl)
+        let photoId = try? container.decode(Int.self, forKey: Keys.photoId)
+        let photoUrl = try? container.decode([String].self, forKey: Keys.photoUrl)
         let title = try? container.decode(String.self, forKey: Keys.title)
         let description = try? container.decode(String.self, forKey: Keys.description)
         let author = try? container.decode(UserResponseModel.self, forKey: Keys.authorName)
