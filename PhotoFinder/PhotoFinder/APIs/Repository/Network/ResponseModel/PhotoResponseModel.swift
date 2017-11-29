@@ -34,7 +34,7 @@ extension PhotoResponseModel: Decodable {
         let container = try decoder.container(keyedBy: Keys.self)
         
         let photoId = try? container.decode(String.self, forKey: Keys.photoId)
-        let photoUrl = try? container.decode([ImageUrlResponseModel].self, forKey: Keys.photoUrl)
+        let photoUrl = try? container.decode([PhotoUrlResponseModel].self, forKey: Keys.photoUrl)
         let title = try? container.decode(String.self, forKey: Keys.title)
         let description = try? container.decode(String.self, forKey: Keys.description)
         let author = try? container.decode(UserResponseModel.self, forKey: Keys.authorName)
