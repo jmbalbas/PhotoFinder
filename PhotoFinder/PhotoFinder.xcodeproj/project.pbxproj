@@ -21,6 +21,7 @@
 		C942DC331FCEBA46000D48C6 /* PhotoUrlResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C942DC321FCEBA46000D48C6 /* PhotoUrlResponseModel.swift */; };
 		C942DC361FCEBDCD000D48C6 /* GetPhotosByKeyword.json in Resources */ = {isa = PBXBuildFile; fileRef = C942DC351FCEBDCD000D48C6 /* GetPhotosByKeyword.json */; };
 		C942DC381FCEC8BC000D48C6 /* PhotosContainerResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C942DC371FCEC8BC000D48C6 /* PhotosContainerResponseModel.swift */; };
+		C942DC3F1FCECB54000D48C6 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C942DC3E1FCECB54000D48C6 /* Configuration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		C942DC321FCEBA46000D48C6 /* PhotoUrlResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUrlResponseModel.swift; sourceTree = "<group>"; };
 		C942DC351FCEBDCD000D48C6 /* GetPhotosByKeyword.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GetPhotosByKeyword.json; sourceTree = "<group>"; };
 		C942DC371FCEC8BC000D48C6 /* PhotosContainerResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosContainerResponseModel.swift; sourceTree = "<group>"; };
+		C942DC3E1FCECB54000D48C6 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,8 @@
 		C942DBD21FCD7599000D48C6 /* PhotoFinder */ = {
 			isa = PBXGroup;
 			children = (
+				C942DC451FCEF4F6000D48C6 /* Model */,
+				C942DC3D1FCECB4A000D48C6 /* Utils */,
 				C942DC2A1FCEB6F9000D48C6 /* APIs */,
 				C942DBEF1FCD77DE000D48C6 /* Modules */,
 				C942DBD31FCD7599000D48C6 /* AppDelegate.swift */,
@@ -179,6 +183,21 @@
 			path = JSONs;
 			sourceTree = "<group>";
 		};
+		C942DC3D1FCECB4A000D48C6 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C942DC3E1FCECB54000D48C6 /* Configuration.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		C942DC451FCEF4F6000D48C6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -257,6 +276,7 @@
 				C942DBD61FCD7599000D48C6 /* ViewController.swift in Sources */,
 				C942DBF11FCD7849000D48C6 /* PhotosListController.swift in Sources */,
 				C942DBEB1FCD7706000D48C6 /* PhotosListViewController.swift in Sources */,
+				C942DC3F1FCECB54000D48C6 /* Configuration.swift in Sources */,
 				C942DBDC1FCD7599000D48C6 /* PhotoFinder.xcdatamodeld in Sources */,
 				C942DC311FCEB9A7000D48C6 /* UserResponseModel.swift in Sources */,
 				C942DC2F1FCEB748000D48C6 /* PhotoResponseModel.swift in Sources */,
