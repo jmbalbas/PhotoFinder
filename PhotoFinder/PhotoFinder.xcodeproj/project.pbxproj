@@ -28,6 +28,7 @@
 		C942DC471FCEF501000D48C6 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C942DC461FCEF501000D48C6 /* ServiceError.swift */; };
 		C942DC4A1FCEFFA9000D48C6 /* PhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C942DC491FCEFFA9000D48C6 /* PhotoViewModel.swift */; };
 		C942DC4C1FCF0268000D48C6 /* PhotosContainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C942DC4B1FCF0268000D48C6 /* PhotosContainerViewModel.swift */; };
+		C9F2647C1FCF1D8A0038582F /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F2647B1FCF1D8A0038582F /* UIImageView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		C942DC461FCEF501000D48C6 /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		C942DC491FCEFFA9000D48C6 /* PhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewModel.swift; sourceTree = "<group>"; };
 		C942DC4B1FCF0268000D48C6 /* PhotosContainerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosContainerViewModel.swift; sourceTree = "<group>"; };
+		C9F2647B1FCF1D8A0038582F /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 		C942DBD21FCD7599000D48C6 /* PhotoFinder */ = {
 			isa = PBXGroup;
 			children = (
+				C9F2647A1FCF1D6F0038582F /* Extensions */,
 				C942DC481FCEFF9C000D48C6 /* ViewModel */,
 				C942DC451FCEF4F6000D48C6 /* Model */,
 				C942DC3D1FCECB4A000D48C6 /* Utils */,
@@ -224,6 +227,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		C9F2647A1FCF1D6F0038582F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C9F2647B1FCF1D8A0038582F /* UIImageView+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -309,6 +320,7 @@
 				C942DC4A1FCEFFA9000D48C6 /* PhotoViewModel.swift in Sources */,
 				C942DBDC1FCD7599000D48C6 /* PhotoFinder.xcdatamodeld in Sources */,
 				C942DC311FCEB9A7000D48C6 /* UserResponseModel.swift in Sources */,
+				C9F2647C1FCF1D8A0038582F /* UIImageView+Extension.swift in Sources */,
 				C942DC2F1FCEB748000D48C6 /* PhotoResponseModel.swift in Sources */,
 				C942DC411FCED0F0000D48C6 /* RepositoryMock.swift in Sources */,
 				C942DC4C1FCF0268000D48C6 /* PhotosContainerViewModel.swift in Sources */,

@@ -10,9 +10,9 @@ import UIKit
 
 class ImageCollectionViewCell: UICollectionViewCell {
     
-    var image: UIImage? {
+    var imageUrl: String? {
         didSet {
-            imageView.image = image
+            imageView.loadImageUrl(imageUrl, placeholder: #imageLiteral(resourceName: "placeholder"))
         }
     }
     

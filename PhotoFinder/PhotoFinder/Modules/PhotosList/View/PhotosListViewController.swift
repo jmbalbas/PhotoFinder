@@ -40,6 +40,12 @@ class PhotosListViewController: UIViewController {
     
     private let images = [#imageLiteral(resourceName: "Image1"), #imageLiteral(resourceName: "Image2"), #imageLiteral(resourceName: "Image3"), #imageLiteral(resourceName: "Image4"), #imageLiteral(resourceName: "Image5"), #imageLiteral(resourceName: "Image1"), #imageLiteral(resourceName: "Image2"), #imageLiteral(resourceName: "Image3"), #imageLiteral(resourceName: "Image4"), #imageLiteral(resourceName: "Image5")]
     
+    private var viewModel: PhotosContainerViewModel? {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -75,7 +81,7 @@ class PhotosListViewController: UIViewController {
 extension PhotosListViewController: PhotosListView {
     
     func displayViewModel(_ viewModel: PhotosContainerViewModel) {
-        
+        self.viewModel = viewModel
     }
 
 }
@@ -95,12 +101,12 @@ extension PhotosListViewController: UICollectionViewDelegateFlowLayout {
 extension PhotosListViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.count
+        return viewModel?.photos.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.cellId, for: indexPath) as! ImageCollectionViewCell
-        cell.image = images[indexPath.row]
+        cell.imageUrl = viewModel?.photos[indexPath.row].photoUrl
         return cell
     }
     
