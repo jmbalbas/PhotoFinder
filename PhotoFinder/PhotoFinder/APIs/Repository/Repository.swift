@@ -10,8 +10,16 @@ import Foundation
 
 class Repository: RepositoryProtocol {
     
+    var APIKey: String {
+        return APIKeys.valueForAPIKey("CONSUMER_KEY") ?? ""
+    }
+    
     func getPhotosByKeyword(_ keyword: String, completionHandler: @escaping (PhotosContainerResponseModel?, Error?) -> ()) {
-        let task = Task(method: .GET, path: .getPhotosSearch(keyword))
+        let params = ["consumer_key" : APIKey,
+                      "image_size[]" : "20",
+                      "rpp" : "100",
+                      "term": keyword]
+        let task = Task(method: .GET, path: .getPhotosSearch, params: params)
         let session = Session()
         
         session.dataTask(task) { result in
@@ -29,7 +37,11 @@ class Repository: RepositoryProtocol {
     }
     
     func getPopularPhotos(completionHandler: @escaping (PhotosContainerResponseModel?, Error?) -> ()) {
-        let task = Task(method: .GET, path: .getPopularPhotos)
+        let params = ["consumer_key" : APIKey,
+                      "image_size[]" : "20",
+                      "rpp" : "100",
+                      "feature": "popular"]
+        let task = Task(method: .GET, path: .getPopularPhotos, params: params)
         let session = Session()
         
         session.dataTask(task) { result in

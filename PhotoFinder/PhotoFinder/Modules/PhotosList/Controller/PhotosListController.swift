@@ -10,7 +10,7 @@ import UIKit
 
 protocol PhotosListPresenter {
     func viewIsReady()
-    func cellSelected(at indexPath: IndexPath)
+    func userIsSearchingFor(_ text: String)
 }
 
 protocol PhotosListView: NSObjectProtocol {
@@ -25,6 +25,10 @@ class PhotosListController {
     
     weak var view: PhotosListViewController?
     
+    private var repository: RepositoryProtocol {
+        return RepositoryFactory.getRepository()
+    }
+    
     private var photosContainerViewModel: PhotosContainerViewModel? {
         didSet {
             if let photosContainer = photosContainerViewModel {
@@ -33,22 +37,22 @@ class PhotosListController {
         }
     }
     
-    private func getViewModel() {
-        let repository = RepositoryFactory.getRepository()
-
-//        repository.getPopularPhotos {[weak self] (response, error) in
-//            guard let weakSelf = self else { return }
-//
-//            DispatchQueue.main.async {
-//                if let response = response {
-//                    weakSelf.photosContainerViewModel = PhotosContainerMapper.map(response)
-//                } else if let error = error {
-//                    print(error.localizedDescription)
-//                }
-//            }
-//        }
-        
-        repository.getPhotosByKeyword("moon") { [weak self] (response, error) in
+    private func getPopularPhotos() {
+        repository.getPopularPhotos {[weak self] (response, error) in
+            guard let weakSelf = self else { return }
+            
+            DispatchQueue.main.async {
+                if let response = response {
+                    weakSelf.photosContainerViewModel = PhotosContainerMapper.map(response)
+                } else if let error = error {
+                    print(error.localizedDescription)
+                }
+            }
+        }
+    }
+    
+    private func getPhotosBy(keyword: String) {
+        repository.getPhotosByKeyword(keyword) { [weak self] (response, error) in
             guard let weakSelf = self else { return }
 
             DispatchQueue.main.async {
@@ -66,11 +70,15 @@ class PhotosListController {
 extension PhotosListController: PhotosListPresenter {
     
     func viewIsReady() {
-        getViewModel()
+        getPopularPhotos()
     }
     
-    func cellSelected(at indexPath: IndexPath) {
-//        view?.performSegue(withIdentifier: Constants.detailSegueId, sender: indexPath)
+    func userIsSearchingFor(_ text: String) {
+        if text.isEmpty {
+            getPopularPhotos()
+        } else {
+            getPhotosBy(keyword: text)
+        }
     }
     
 }

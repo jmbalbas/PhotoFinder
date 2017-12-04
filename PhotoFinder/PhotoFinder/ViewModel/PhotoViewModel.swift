@@ -11,8 +11,8 @@ import Foundation
 struct PhotoViewModel {
     var photoId: String
     var photoUrl: String
-    var title: String?
-    var description: String?
+    var title: String
+    var description: String
     var author: String
     var timesViewed: Int
     var likes: Int

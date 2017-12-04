@@ -18,10 +18,14 @@ class PhotoDetailViewController: UIViewController {
     
     private var viewModel: PhotoViewModel? {
         didSet {
-            imageView?.loadImageUrl(viewModel?.photoUrl, placeholder: #imageLiteral(resourceName: "placeholder"))
-            titleLabel?.text = viewModel?.title
-            descriptionLabel?.text = viewModel?.description
-            authorLabel?.text = viewModel?.author
+            if let viewModel = viewModel {
+                imageView.loadImageUrl(viewModel.photoUrl, placeholder: #imageLiteral(resourceName: "placeholder"))
+                titleLabel.text = viewModel.title
+                descriptionLabel.text = viewModel.description
+                authorLabel.text = viewModel.author
+                timesViewedLabel.text = String(describing: viewModel.timesViewed)
+                likesLabel.text = String(describing: viewModel.likes)
+            }
         }
     }
     
@@ -29,6 +33,8 @@ class PhotoDetailViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
+    @IBOutlet weak var timesViewedLabel: UILabel!
+    @IBOutlet weak var likesLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()

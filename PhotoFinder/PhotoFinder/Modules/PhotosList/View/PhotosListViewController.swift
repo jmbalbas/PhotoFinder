@@ -53,7 +53,13 @@ class PhotosListViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var searchTextField: UITextField! {
+        didSet {
+            searchTextField.delegate = self
+            searchTextField.placeholder = "Type your search here..."
+            searchTextField.textAlignment = .center
+        }
+    }
     
     lazy var controller: PhotosListController = {
         let controller = PhotosListController()
@@ -163,7 +169,6 @@ extension PhotosListViewController: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        controller.cellSelected(at: indexPath)
         performSegue(withIdentifier: Constants.detailSegueId, sender: indexPath)
     }
     
@@ -173,6 +178,18 @@ extension PhotosListViewController: CollectionViewDelegate {
     
     func touchesBegan(_ collectionView: CollectionView) {
         dismissKeyboard()
+    }
+    
+}
+
+extension PhotosListViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        controller.userIsSearchingFor(textField.text ?? "")
+
+        dismissKeyboard()
+
+        return true
     }
     
 }
