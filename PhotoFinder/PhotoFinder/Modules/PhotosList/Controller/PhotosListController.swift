@@ -8,16 +8,20 @@
 
 import UIKit
 
-protocol PhotosListPresenter: class {
+protocol PhotosListPresenter {
     func viewIsReady()
-    func cellSelected()
+    func cellSelected(at indexPath: IndexPath)
 }
 
-protocol PhotosListView: class {
+protocol PhotosListView: NSObjectProtocol {
     func displayViewModel(_ viewModel: PhotosContainerViewModel)
 }
 
 class PhotosListController {
+    
+    private struct Constants {
+        static let detailSegueId = "showPhotoDetail"
+    }
     
     weak var view: PhotosListViewController?
     
@@ -45,7 +49,6 @@ class PhotosListController {
         }
     }
     
-    
 }
 
 extension PhotosListController: PhotosListPresenter {
@@ -54,8 +57,8 @@ extension PhotosListController: PhotosListPresenter {
         getViewModel()
     }
     
-    func cellSelected() {
-        // TODO
+    func cellSelected(at indexPath: IndexPath) {
+//        view?.performSegue(withIdentifier: Constants.detailSegueId, sender: indexPath)
     }
     
 }
