@@ -11,5 +11,6 @@ import Foundation
 protocol RepositoryProtocol {
     
     func getPhotosByKeyword(_ keyword: String, completionHandler: @escaping (PhotosContainerResponseModel?, Error?) -> ())
+    func getPopularPhotos(completionHandler: @escaping (PhotosContainerResponseModel?, Error?) -> ())
     
 }

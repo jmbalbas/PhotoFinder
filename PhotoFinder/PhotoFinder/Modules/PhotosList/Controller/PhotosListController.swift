@@ -35,10 +35,22 @@ class PhotosListController {
     
     private func getViewModel() {
         let repository = RepositoryFactory.getRepository()
+
+//        repository.getPopularPhotos {[weak self] (response, error) in
+//            guard let weakSelf = self else { return }
+//
+//            DispatchQueue.main.async {
+//                if let response = response {
+//                    weakSelf.photosContainerViewModel = PhotosContainerMapper.map(response)
+//                } else if let error = error {
+//                    print(error.localizedDescription)
+//                }
+//            }
+//        }
         
-        repository.getPhotosByKeyword("puppy") { [weak self] (response, error) in
+        repository.getPhotosByKeyword("moon") { [weak self] (response, error) in
             guard let weakSelf = self else { return }
-            
+
             DispatchQueue.main.async {
                 if let response = response {
                     weakSelf.photosContainerViewModel = PhotosContainerMapper.map(response)

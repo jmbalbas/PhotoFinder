@@ -48,4 +48,8 @@ extension RepositoryMock: RepositoryProtocol {
         loadJSON(fileName: jsonFilename, responseModel: PhotosContainerResponseModel.self, completionHandler: completionHandler)
     }
     
+    func getPopularPhotos(completionHandler: @escaping (PhotosContainerResponseModel?, Error?) -> ()) {
+        loadJSON(fileName: jsonFilename, responseModel: PhotosContainerResponseModel.self, completionHandler: completionHandler)
+    }
+    
 }
