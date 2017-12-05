@@ -46,17 +46,17 @@ class PhotoDetailViewController: UIViewController {
     }
     @IBOutlet weak var authorLabel: UILabel! {
         didSet {
-            authorLabel.font = Components.Font.RegularMedium
+            authorLabel.font = Components.Font.RegularSmall
         }
     }
     @IBOutlet weak var timesViewedLabel: UILabel! {
         didSet {
-            timesViewedLabel.font = Components.Font.RegularMedium
+            timesViewedLabel.font = Components.Font.RegularSmall
         }
     }
     @IBOutlet weak var likesLabel: UILabel! {
         didSet {
-            likesLabel.font = Components.Font.RegularMedium
+            likesLabel.font = Components.Font.RegularSmall
         }
     }
     
