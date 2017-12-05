@@ -10,7 +10,10 @@ import Foundation
 
 class RepositoryMock {
     
-    let jsonFilename = "GetPhotosByKeyword"
+    private enum JSONFilename: String {
+        case getPhotosByKeyword = "GetPhotosByKeyword"
+        case getPopularPhotos = "GetPopularPhotos"
+    }
 
     private func loadJSON<T>(fileName: String, responseModel: T.Type, completionHandler: ((T?, ServiceError?) -> ())? ) where T: Decodable {
 
@@ -45,11 +48,11 @@ class RepositoryMock {
 extension RepositoryMock: RepositoryProtocol {
     
     func getPhotosByKeyword(_ keyword: String, completionHandler: @escaping (PhotosContainerResponseModel?, Error?) -> ()) {
-        loadJSON(fileName: jsonFilename, responseModel: PhotosContainerResponseModel.self, completionHandler: completionHandler)
+        loadJSON(fileName: JSONFilename.getPhotosByKeyword.rawValue, responseModel: PhotosContainerResponseModel.self, completionHandler: completionHandler)
     }
     
     func getPopularPhotos(completionHandler: @escaping (PhotosContainerResponseModel?, Error?) -> ()) {
-        loadJSON(fileName: jsonFilename, responseModel: PhotosContainerResponseModel.self, completionHandler: completionHandler)
+        loadJSON(fileName: JSONFilename.getPopularPhotos.rawValue, responseModel: PhotosContainerResponseModel.self, completionHandler: completionHandler)
     }
     
 }
