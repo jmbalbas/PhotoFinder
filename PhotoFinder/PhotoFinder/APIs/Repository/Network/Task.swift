@@ -57,12 +57,11 @@ class Task {
     /// - Parameters:
     ///   - method: The HTTP method.
     ///   - path: The endpoint.
+    ///   - params: This parameters will be appended as path components (i.e. endpoint?param1=value1&param2=value2)
     init(method: Method, path: EndPoint, params: [String:String] = [:]) {
         self.method = method
         
-        if !params.isEmpty,
-            let url = URL(string: path.description) {
-            
+        if !params.isEmpty, let url = URL(string: path.description) {
             var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
             components?.queryItems = params.map { URLQueryItem(name: $0.key, value: $0.value) }
             components?.path = url.absoluteString
@@ -75,7 +74,6 @@ class Task {
     /// Convert the class into a valid URLRequest.
     func asUrlRequest() -> URLRequest {
         let url = URL(string: Configuration.shared.environment.baseUrl() + path)!
-        print(url)
         var request = URLRequest(url: url)
         request.httpMethod = method.description
         

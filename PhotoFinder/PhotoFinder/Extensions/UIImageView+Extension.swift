@@ -12,6 +12,10 @@ let imageCache = NSCache<AnyObject, AnyObject>()
 
 extension UIImageView {
     
+    /// Assigns the placeholder image to the image view and starts the download of the image in asynchronous. If the image is correctly downloaded, then replaces the placeholder.
+    /// - Parameters:
+    ///   - urlString: The url of the image.
+    ///   - placeholder: The placeholder image.
     func loadImageUrl(_ urlString: String?, placeholder: UIImage?) {
         if let placeholder = placeholder {
             image = placeholder

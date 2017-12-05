@@ -21,7 +21,6 @@ class CollectionView: UICollectionView {
         
         touchDelegate?.touchesBegan(self)
     }
-    
 }
 
 class PhotosListViewController: UIViewController {
@@ -56,7 +55,7 @@ class PhotosListViewController: UIViewController {
     @IBOutlet weak var searchTextField: UITextField! {
         didSet {
             searchTextField.delegate = self
-            searchTextField.placeholder = "Type your search here..."
+            searchTextField.placeholder = "type_search_here".localized
             searchTextField.textAlignment = .center
         }
     }
@@ -73,10 +72,21 @@ class PhotosListViewController: UIViewController {
         }
     }
     
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(activityIndicator)
+        activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.color = .black
+        return activityIndicator
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "PhotoFinder"
+        navigationItem.title = "photo_finder".localized
         
         controller.viewIsReady()
     }
@@ -110,6 +120,8 @@ class PhotosListViewController: UIViewController {
     private func setupCollectionViewStyles() {
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.scrollDirection = .vertical
+        layout.minimumInteritemSpacing = 1
+        layout.minimumLineSpacing = 1
         collectionView.contentInset = UIEdgeInsets(top: Constants.collectionViewTopInset,
                                                    left: Constants.collectionViewLeftInset,
                                                    bottom: Constants.collectionViewBottomInset,
@@ -132,6 +144,14 @@ extension PhotosListViewController: PhotosListView {
     
     func displayViewModel(_ viewModel: PhotosContainerViewModel) {
         self.viewModel = viewModel
+    }
+    
+    func displayLoading() {
+        activityIndicator.startAnimating()
+    }
+    
+    func dismissLoading() {
+        activityIndicator.stopAnimating()
     }
 
 }

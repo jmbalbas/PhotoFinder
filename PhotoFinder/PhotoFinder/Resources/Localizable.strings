@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  PhotoFinder
+
+  Created by Martin Balbas, Juan Santiago (Cognizant) on 12/5/17.
+  Copyright © 2017 Martin Balbas, Juan Santiago (Cognizant). All rights reserved.
+*/
+
+// PhotoListView
+"photo_finder" = "PhotoFinder";
+"type_search_here" = "Type your search here...";
+
+// PhotoDetailView
+"author" = "Author:";
+"times_viewed" = "Times viewed:";
+"likes" = "Likes:";

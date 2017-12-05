@@ -15,6 +15,8 @@ protocol PhotosListPresenter {
 
 protocol PhotosListView: NSObjectProtocol {
     func displayViewModel(_ viewModel: PhotosContainerViewModel)
+    func displayLoading()
+    func dismissLoading()
 }
 
 class PhotosListController {
@@ -38,10 +40,13 @@ class PhotosListController {
     }
     
     private func getPopularPhotos() {
+        view?.displayLoading()
         repository.getPopularPhotos {[weak self] (response, error) in
             guard let weakSelf = self else { return }
             
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
+                self?.view?.dismissLoading()
+                
                 if let response = response {
                     weakSelf.photosContainerViewModel = PhotosContainerMapper.map(response)
                 } else if let error = error {
@@ -52,10 +57,12 @@ class PhotosListController {
     }
     
     private func getPhotosBy(keyword: String) {
+        view?.displayLoading()
         repository.getPhotosByKeyword(keyword) { [weak self] (response, error) in
             guard let weakSelf = self else { return }
 
             DispatchQueue.main.async {
+                self?.view?.dismissLoading()
                 if let response = response {
                     weakSelf.photosContainerViewModel = PhotosContainerMapper.map(response)
                 } else if let error = error {
