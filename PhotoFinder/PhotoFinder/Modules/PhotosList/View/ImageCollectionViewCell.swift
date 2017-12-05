@@ -10,9 +10,11 @@ import UIKit
 
 class ImageCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - Properties
+    
     var imageUrl: String? {
         didSet {
-            imageView.loadImageUrl(imageUrl, placeholder: #imageLiteral(resourceName: "placeholder"))
+            imageView.loadImageUrl(imageUrl, placeholder: Components.Image.Placeholder)
         }
     }
     
@@ -24,6 +26,8 @@ class ImageCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
+    // MARK: - Init
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -33,6 +37,8 @@ class ImageCollectionViewCell: UICollectionViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Private methods
     
     private func configureUI() {
         addSubview(imageView)

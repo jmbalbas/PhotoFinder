@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Repository mock, retrieves data from JSON files.
 class RepositoryMock {
     
     private enum JSONFilename: String {
@@ -15,6 +16,8 @@ class RepositoryMock {
         case getPopularPhotos = "GetPopularPhotos"
     }
 
+    // MARK: - Private methods
+    
     private func loadJSON<T>(fileName: String, responseModel: T.Type, completionHandler: ((T?, ServiceError?) -> ())? ) where T: Decodable {
 
         // Load JSON from the bundle file
@@ -22,7 +25,6 @@ class RepositoryMock {
             let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe),
             let jsonResult = try? JSONSerialization.jsonObject(with: data, options: .mutableLeaves),
             let _ = jsonResult as? [String : Any]  else {
-                
                 if let completionHandler = completionHandler {
                     completionHandler(nil, ServiceError.failedLoadingJson)
                 }

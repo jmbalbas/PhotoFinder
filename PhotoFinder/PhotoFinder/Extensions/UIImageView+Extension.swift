@@ -44,8 +44,7 @@ extension UIImageView {
                 return
             }
             
-            if let data = data,
-                let image = UIImage(data: data) {
+            if let data = data, let image = UIImage(data: data) {
                 
                 // Save image in cache
                 imageCache.setObject(image, forKey: urlString as AnyObject)

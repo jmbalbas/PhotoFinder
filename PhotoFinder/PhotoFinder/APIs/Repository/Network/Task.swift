@@ -8,7 +8,10 @@
 
 import Foundation
 
+/// Request class used by Session to make a connection with the server.
 class Task {
+    
+    // MARK: - Properties
     
     let path: String
     let method: Method
@@ -70,6 +73,8 @@ class Task {
             self.path = path.description
         }
     }
+    
+    // MARK: - Public methods
     
     /// Convert the class into a valid URLRequest.
     func asUrlRequest() -> URLRequest {

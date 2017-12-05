@@ -32,9 +32,7 @@ extension UserResponseModel: Decodable {
         let firstName = try? container.decode(String.self, forKey: Keys.firstName)
         let lastName = try? container.decode(String.self, forKey: Keys.lastName)
         
-        
         self.init(userId: userId, userName: userName, firstName: firstName, lastName: lastName)
     }
     
 }
-

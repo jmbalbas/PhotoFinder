@@ -8,8 +8,12 @@
 
 import Foundation
 
+/// Repository factory, for managing different types of repositories.
 class RepositoryFactory {
     
+    // MARK: - Public methods
+    
+    /// Returns a repository based on the current scheme.
     class func getRepository() -> RepositoryProtocol {
         let currentConfiguration = Configuration.shared.environment
         

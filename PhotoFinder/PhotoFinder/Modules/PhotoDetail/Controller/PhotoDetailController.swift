@@ -19,9 +19,7 @@ protocol PhotoDetailView: NSObjectProtocol {
 class PhotoDetailController {
  
     weak var view: PhotoDetailViewController?
-
     var viewModel: PhotoViewModel?
-
     
 }
 

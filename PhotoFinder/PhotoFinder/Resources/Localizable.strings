@@ -9,6 +9,7 @@
 // PhotoListView
 "photo_finder" = "PhotoFinder";
 "type_search_here" = "Type your search here...";
+"no_results" = "No results found. Try another search...";
 
 // PhotoDetailView
 "author" = "Author:";

@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Delegate protocol for CollectionView.
 protocol CollectionViewDelegate: class {
     func touchesBegan(_ collectionView: CollectionView)
 }
@@ -25,6 +26,8 @@ class CollectionView: UICollectionView {
 
 class PhotosListViewController: UIViewController {
 
+    // MARK: - Constants
+    
     private struct Constants {
         static let cellId = "imageCellId"
         static let detailSegueId = "showPhotoDetail"
@@ -36,9 +39,7 @@ class PhotosListViewController: UIViewController {
         static let collectionViewRightInset: CGFloat = 0
     }
     
-    private var cellsPerRow: Int {
-        return (UIDevice.current.orientation.isLandscape) ? Constants.cellsPerRowInLandscape : Constants.cellsPerRowInPortrait
-    }
+    // MARK: - Outlets
     
     @IBOutlet weak var collectionView: CollectionView! {
         didSet {
@@ -56,9 +57,12 @@ class PhotosListViewController: UIViewController {
         didSet {
             searchTextField.delegate = self
             searchTextField.placeholder = "type_search_here".localized
+            searchTextField.font = Components.Font.SemiBoldSmall
             searchTextField.textAlignment = .center
         }
     }
+    
+    // MARK: - Properties
     
     lazy var controller: PhotosListController = {
         let controller = PhotosListController()
@@ -68,8 +72,15 @@ class PhotosListViewController: UIViewController {
     
     private var viewModel: PhotosContainerViewModel? {
         didSet {
-            collectionView.reloadData()
+            if let viewModel = viewModel {
+                noResultsLabel.isHidden = !viewModel.photos.isEmpty
+                collectionView.reloadData()
+            }
         }
+    }
+    
+    private var cellsPerRow: Int {
+        return (UIDevice.current.orientation.isLandscape) ? Constants.cellsPerRowInLandscape : Constants.cellsPerRowInPortrait
     }
     
     private lazy var activityIndicator: UIActivityIndicatorView = {
@@ -83,6 +94,20 @@ class PhotosListViewController: UIViewController {
         return activityIndicator
     }()
     
+    private lazy var noResultsLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.font = Components.Font.SemiBoldMedium
+        label.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(label)
+        label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        label.text = "no_results".localized
+        return label
+    }()
+    
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -90,6 +115,8 @@ class PhotosListViewController: UIViewController {
         
         controller.viewIsReady()
     }
+    
+    // MARK: - Override methods
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
@@ -102,6 +129,8 @@ class PhotosListViewController: UIViewController {
         dismissKeyboard()
     }
     
+    // MARK: - Navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Constants.detailSegueId {
             let photoDetailVC = segue.destination as! PhotoDetailViewController
@@ -113,10 +142,12 @@ class PhotosListViewController: UIViewController {
     
     // MARK: - Private methods
     
+    /// Registers the collection view's cells.
     private func registerCells() {
         collectionView.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: Constants.cellId)
     }
     
+    /// Sets up the collection view styles.
     private func setupCollectionViewStyles() {
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.scrollDirection = .vertical
@@ -140,6 +171,8 @@ class PhotosListViewController: UIViewController {
     
 }
 
+// MARK: - PhotosListView
+
 extension PhotosListViewController: PhotosListView {
     
     func displayViewModel(_ viewModel: PhotosContainerViewModel) {
@@ -156,6 +189,8 @@ extension PhotosListViewController: PhotosListView {
 
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout
+
 extension PhotosListViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -167,6 +202,8 @@ extension PhotosListViewController: UICollectionViewDelegateFlowLayout {
     }
     
 }
+
+// MARK: - UICollectionViewDataSource
 
 extension PhotosListViewController: UICollectionViewDataSource {
     
@@ -182,6 +219,8 @@ extension PhotosListViewController: UICollectionViewDataSource {
     
 }
 
+// MARK: - UICollectionViewDelegate
+
 extension PhotosListViewController: UICollectionViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -194,6 +233,8 @@ extension PhotosListViewController: UICollectionViewDelegate {
     
 }
 
+// MARK: - CollectionViewDelegate
+
 extension PhotosListViewController: CollectionViewDelegate {
     
     func touchesBegan(_ collectionView: CollectionView) {
@@ -202,12 +243,15 @@ extension PhotosListViewController: CollectionViewDelegate {
     
 }
 
+// MARK: - UITextFieldDelegate
+
 extension PhotosListViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         controller.userIsSearchingFor(textField.text ?? "")
 
         dismissKeyboard()
+        noResultsLabel.isHidden = true
 
         return true
     }

@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Repository, retrieves data from the server API.
 class Repository: RepositoryProtocol {
     
     var APIKey: String {

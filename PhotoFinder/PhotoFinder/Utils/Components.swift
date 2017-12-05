@@ -10,6 +10,10 @@ import UIKit
 
 struct Components {
     
+    struct Image {
+        static var Placeholder = #imageLiteral(resourceName: "placeholder")
+    }
+    
     struct Font {
         
         private static var RegularFontName: String  { return "ProximaNova-Regular" }

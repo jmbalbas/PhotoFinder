@@ -8,7 +8,10 @@
 
 import Foundation
 
+/// Communication class responsible for launch requests to the server.
 class Session {
+    
+    // MARK: - Properties
     
     private var configuration: URLSessionConfiguration = {
         let configuration = URLSessionConfiguration.default
@@ -21,6 +24,8 @@ class Session {
     private lazy var session: URLSession = {
        return URLSession(configuration: configuration)
     }()
+    
+    // MARK: - Public methods
     
     func dataTask(_ task: Task, completionHandler: @escaping (Result<Data, ServiceError>) -> ()) {
         let urlRequest = task.asUrlRequest()
