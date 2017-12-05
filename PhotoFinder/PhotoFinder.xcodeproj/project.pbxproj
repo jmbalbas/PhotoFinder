@@ -17,6 +17,11 @@
 		C923CDAD1FD6936C00BA9BBC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C923CDAC1FD6936C00BA9BBC /* Localizable.strings */; };
 		C923CDAF1FD6944100BA9BBC /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C923CDAE1FD6944100BA9BBC /* String+Extension.swift */; };
 		C923CDB11FD6976700BA9BBC /* GetPopularPhotos.json in Resources */ = {isa = PBXBuildFile; fileRef = C923CDB01FD6976700BA9BBC /* GetPopularPhotos.json */; };
+		C923CDB71FD69F8500BA9BBC /* ProximaNova-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C923CDB31FD69F8400BA9BBC /* ProximaNova-Bold.otf */; };
+		C923CDB81FD69F8500BA9BBC /* ProximaNova-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = C923CDB41FD69F8400BA9BBC /* ProximaNova-Light.otf */; };
+		C923CDB91FD69F8500BA9BBC /* ProximaNova-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C923CDB51FD69F8400BA9BBC /* ProximaNova-Regular.otf */; };
+		C923CDBA1FD69F8500BA9BBC /* ProximaNova-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C923CDB61FD69F8400BA9BBC /* ProximaNova-Semibold.otf */; };
+		C923CDBC1FD6A03500BA9BBC /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = C923CDBB1FD6A03500BA9BBC /* Components.swift */; };
 		C942DBD41FCD7599000D48C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C942DBD31FCD7599000D48C6 /* AppDelegate.swift */; };
 		C942DBD91FCD7599000D48C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C942DBD71FCD7599000D48C6 /* Main.storyboard */; };
 		C942DBDC1FCD7599000D48C6 /* PhotoFinder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C942DBDA1FCD7599000D48C6 /* PhotoFinder.xcdatamodeld */; };
@@ -52,6 +57,11 @@
 		C923CDAC1FD6936C00BA9BBC /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		C923CDAE1FD6944100BA9BBC /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		C923CDB01FD6976700BA9BBC /* GetPopularPhotos.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GetPopularPhotos.json; sourceTree = "<group>"; };
+		C923CDB31FD69F8400BA9BBC /* ProximaNova-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Bold.otf"; sourceTree = "<group>"; };
+		C923CDB41FD69F8400BA9BBC /* ProximaNova-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Light.otf"; sourceTree = "<group>"; };
+		C923CDB51FD69F8400BA9BBC /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.otf"; sourceTree = "<group>"; };
+		C923CDB61FD69F8400BA9BBC /* ProximaNova-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Semibold.otf"; sourceTree = "<group>"; };
+		C923CDBB1FD6A03500BA9BBC /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
 		C942DBD01FCD7599000D48C6 /* PhotoFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C942DBD31FCD7599000D48C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C942DBD81FCD7599000D48C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -108,9 +118,21 @@
 		C923CDAB1FD6934E00BA9BBC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C923CDB21FD69F8400BA9BBC /* Fonts */,
 				C923CDAC1FD6936C00BA9BBC /* Localizable.strings */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		C923CDB21FD69F8400BA9BBC /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				C923CDB31FD69F8400BA9BBC /* ProximaNova-Bold.otf */,
+				C923CDB41FD69F8400BA9BBC /* ProximaNova-Light.otf */,
+				C923CDB51FD69F8400BA9BBC /* ProximaNova-Regular.otf */,
+				C923CDB61FD69F8400BA9BBC /* ProximaNova-Semibold.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		C942DBC71FCD7599000D48C6 = {
@@ -250,6 +272,7 @@
 			children = (
 				C942DC3E1FCECB54000D48C6 /* Configuration.swift */,
 				C923CDA91FD5C27E00BA9BBC /* APIKeys.swift */,
+				C923CDBB1FD6A03500BA9BBC /* Components.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -341,10 +364,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C942DBE11FCD7599000D48C6 /* LaunchScreen.storyboard in Resources */,
+				C923CDB91FD69F8500BA9BBC /* ProximaNova-Regular.otf in Resources */,
 				C923CDB11FD6976700BA9BBC /* GetPopularPhotos.json in Resources */,
 				C923CDAD1FD6936C00BA9BBC /* Localizable.strings in Resources */,
 				C942DBDE1FCD7599000D48C6 /* Assets.xcassets in Resources */,
+				C923CDBA1FD69F8500BA9BBC /* ProximaNova-Semibold.otf in Resources */,
 				C942DC361FCEBDCD000D48C6 /* GetPhotosByKeyword.json in Resources */,
+				C923CDB81FD69F8500BA9BBC /* ProximaNova-Light.otf in Resources */,
+				C923CDB71FD69F8500BA9BBC /* ProximaNova-Bold.otf in Resources */,
 				C942DBD91FCD7599000D48C6 /* Main.storyboard in Resources */,
 				C923CDA81FD5C20000BA9BBC /* Keys.plist in Resources */,
 			);
@@ -370,6 +397,7 @@
 				C942DBEB1FCD7706000D48C6 /* PhotosListViewController.swift in Sources */,
 				C942DC471FCEF501000D48C6 /* ServiceError.swift in Sources */,
 				C942DC3F1FCECB54000D48C6 /* Configuration.swift in Sources */,
+				C923CDBC1FD6A03500BA9BBC /* Components.swift in Sources */,
 				C942DC4A1FCEFFA9000D48C6 /* PhotoViewModel.swift in Sources */,
 				C942DBDC1FCD7599000D48C6 /* PhotoFinder.xcdatamodeld in Sources */,
 				C91EB2021FD5A17000F1B53B /* Result.swift in Sources */,

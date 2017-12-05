@@ -30,8 +30,16 @@ class PhotoDetailViewController: UIViewController {
     }
     
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel! {
+        didSet {
+            titleLabel.font = Components.Font.BoldMedium
+        }
+    }
+    @IBOutlet weak var descriptionLabel: UILabel! {
+        didSet {
+            descriptionLabel.font = Components.Font.RegularSmall
+        }
+    }
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var timesViewedLabel: UILabel!
     @IBOutlet weak var likesLabel: UILabel!
